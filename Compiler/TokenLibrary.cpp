@@ -5,12 +5,12 @@
 #include "TokenLibrary.h"
 using namespace std;
 
-string DATA_TYPES_PATTERN = "int|char|float|string";
+string DATA_TYPES_PATTERN = "\\b(int|char|float|string)\\b";
 string KEYWORDS_PATTERN = DATA_TYPES_PATTERN
-                          + "|if|else(?!\\s+if)|else\\s+if"
+                          + "|\\b(if|else(?!\\s+if)|else\\s+if"
                             "|while|Do|for"
                             "|switch|case"
-                            "|break|continue|return";
+                            "|break|continue|return)\\b";
 string PUNCTUATION_PATTERN = ":|;|,";
 string IDENTIFIER_PATTERN = "\\b(?!(" + KEYWORDS_PATTERN + "|" + PUNCTUATION_PATTERN + ")\\b)([a-zA-Z][_a-zA-Z$0-9]*)";
 string CONSTANTS_PATTERN = "\\b\\d+(\\.\\d+)?\\b";

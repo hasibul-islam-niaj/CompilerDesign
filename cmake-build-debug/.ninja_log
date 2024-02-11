@@ -27,3 +27,7 @@
 228	380	1707690851802389003	CompilerDesign	9a14c0b2ce2f5984
 0	234	1707690891376163329	CMakeFiles/CompilerDesign.dir/Compiler/TokenLibrary.cpp.o	c29b6fbf42e52638
 234	384	1707690891526164990	CompilerDesign	9a14c0b2ce2f5984
+1	233	1707691320830668860	CMakeFiles/CompilerDesign.dir/Compiler/TokenLibrary.cpp.o	c29b6fbf42e52638
+234	400	1707691320994003835	CompilerDesign	9a14c0b2ce2f5984
+1	594	1707691374341204599	CMakeFiles/CompilerDesign.dir/main.cpp.o	213f32ddf709fafc
+594	742	1707691374487872729	CompilerDesign	9a14c0b2ce2f5984
