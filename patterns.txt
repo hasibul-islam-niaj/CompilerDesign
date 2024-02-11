@@ -1,0 +1,2 @@
+(\s+)? -> is there any space in middle, match those.
+(?!=) -> is there has no any = after a character.
