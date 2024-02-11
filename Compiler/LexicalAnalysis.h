@@ -8,11 +8,17 @@
 #include "iostream"
 #include "string"
 #include "regex"
+#include "TokenLibrary.h"
+
 using namespace std;
 
 class LexicalAnalysis {
+private:
+    Token tokens[numberOfToken];
+
 public:
-    void getTokens(std::string code);
+    void generateSourceToken(string code);
+    LexicalAnalysis();
 };
 
 

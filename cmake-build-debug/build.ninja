@@ -61,6 +61,12 @@ build CMakeFiles/CompilerDesign.dir/Compiler/LexicalAnalysis.cpp.o: CXX_COMPILER
   OBJECT_DIR = CMakeFiles/CompilerDesign.dir
   OBJECT_FILE_DIR = CMakeFiles/CompilerDesign.dir/Compiler
 
+build CMakeFiles/CompilerDesign.dir/Compiler/TokenLibrary.cpp.o: CXX_COMPILER__CompilerDesign_Debug /home/hasibul/CLionProjects/CompilerDesign/Compiler/TokenLibrary.cpp || cmake_object_order_depends_target_CompilerDesign
+  DEP_FILE = CMakeFiles/CompilerDesign.dir/Compiler/TokenLibrary.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
+  OBJECT_DIR = CMakeFiles/CompilerDesign.dir
+  OBJECT_FILE_DIR = CMakeFiles/CompilerDesign.dir/Compiler
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target CompilerDesign
@@ -69,7 +75,7 @@ build CMakeFiles/CompilerDesign.dir/Compiler/LexicalAnalysis.cpp.o: CXX_COMPILER
 #############################################
 # Link the executable CompilerDesign
 
-build CompilerDesign: CXX_EXECUTABLE_LINKER__CompilerDesign_Debug CMakeFiles/CompilerDesign.dir/main.cpp.o CMakeFiles/CompilerDesign.dir/Compiler/LexicalAnalysis.cpp.o
+build CompilerDesign: CXX_EXECUTABLE_LINKER__CompilerDesign_Debug CMakeFiles/CompilerDesign.dir/main.cpp.o CMakeFiles/CompilerDesign.dir/Compiler/LexicalAnalysis.cpp.o CMakeFiles/CompilerDesign.dir/Compiler/TokenLibrary.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/CompilerDesign.dir
   POST_BUILD = :

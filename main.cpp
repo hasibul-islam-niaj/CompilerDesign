@@ -3,10 +3,18 @@
 
 int main() {
     LexicalAnalysis lexicalAnalysis;
-    int a_$1s;
-    int *p = &a_$1s;
-    std::string codeLine = "int a:, a_b, a_$1s aas_df_$1s, a_$1, ; a_, a_1, a_1828, 1a, for (i=0; i<10; i+=1) {if i<10 {return i-29} else if a > 30 else 6*59}  a_a/5   [&a]";
-//    std::string codeLine = "&aasdf asdf";
-    lexicalAnalysis.getTokens(codeLine);
+
+    string codeLines[4];
+    codeLines[0] = "int a = b*c + 10;";
+    codeLines[1] = "string data = a == b?passed:failed; float k = 2.434;";
+    codeLines[2] = "string *data = &TEST;";
+    codeLines[3] = "int 1a = 20;";
+
+    int iterator = 1;
+    for(string codeLine: codeLines) {
+        cout << "\n\n ~ " << iterator++ << ". " << codeLine << endl;
+        lexicalAnalysis.generateSourceToken(codeLine);
+    }
+
     return 0;
 }

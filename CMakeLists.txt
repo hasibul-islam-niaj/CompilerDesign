@@ -3,4 +3,4 @@ project(CompilerDesign)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(CompilerDesign main.cpp Compiler/LexicalAnalysis.cpp Compiler/LexicalAnalysis.h)
+add_executable(CompilerDesign main.cpp Compiler/LexicalAnalysis.cpp Compiler/LexicalAnalysis.h Compiler/TokenLibrary.cpp Compiler/TokenLibrary.h)
