@@ -1,7 +1,34 @@
 #include <iostream>
 #include "Compiler/LexicalAnalysis.h"
 
+string leftMostDerivation(string input, string requiredWord, map<char, vector<string>> rules) {
+    string preparedWord = input;
+    int preparingIndex = 0;
+
+    char workingCharacter;
+    vector<string> workingRules;
+    while (requiredWord.length() != preparingIndex) {
+        workingCharacter = preparedWord[preparingIndex];
+
+        if (preparedWord[preparingIndex] != requiredWord[preparingIndex]){
+            if (!rules[workingCharacter].empty())
+                workingRules = rules[workingCharacter];
+
+            preparedWord.replace(preparingIndex, workingRules[0].length(), workingRules[0]);
+
+            cout << "Step-" << preparingIndex + 1 << ": " + preparedWord << endl;
+            if (preparedWord[preparingIndex] == requiredWord[preparingIndex])
+                preparingIndex++;
+        }
+
+        workingRules.clear();
+    }
+
+    return preparedWord;
+}
+
 int main() {
+    /***
     LexicalAnalysis lexicalAnalysis;
 
     string codeLines[5];
@@ -16,6 +43,20 @@ int main() {
         cout << "\n\n ~ " << iterator++ << ". " << codeLine << endl;
         lexicalAnalysis.generateSourceToken(codeLine);
     }
+     */
+
+    string word = "abc";
+
+    map<char, vector<string>> rules;
+    vector<string> data = {};
+    rules.insert(make_pair('S', vector<string> {"aAB"}));
+    rules.insert(make_pair('A', vector<string> {"b", "E"}));
+    rules.insert(make_pair('B', vector<string> {"c", "E"}));
+
+    string input = "S";
+
+    string preparedWord = leftMostDerivation(input, word, rules);
+    cout << "The word: " << preparedWord << endl;
 
     return 0;
 }
