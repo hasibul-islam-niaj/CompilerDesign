@@ -1,22 +1,61 @@
 #include <iostream>
 #include "Compiler/LexicalAnalysis.h"
 
+char findRuleWhereCharacterExists(char requiredCharacter, map<char, vector<string>> &rules) {
+    char setOfRule;
+
+    for (const auto& kv : rules) {
+        const auto& characterSets = kv.second;
+
+        for (const auto& characterSet : characterSets) {
+            if (characterSet[0] == requiredCharacter) {
+                setOfRule = kv.first;
+                break;
+            }
+        }
+    }
+
+    return setOfRule;
+}
+
+string findTheRuleToReplace(char targetCharacter, vector<string> workingRules) {
+    string ruleToReplace;
+    for (string rule: workingRules) {
+        if (rule[0] == targetCharacter) {
+            ruleToReplace = rule;
+            break;
+        }
+    }
+    return ruleToReplace;
+}
+
 string leftMostDerivation(string input, string requiredWord, map<char, vector<string>> rules) {
     string preparedWord = input;
     int preparingIndex = 0;
 
-    char workingCharacter;
+    char workingCharacter, targetCharacter;
     vector<string> workingRules;
-    while (requiredWord.length() != preparingIndex) {
+    string ruleToReplace;
+    int stepCounter = 1;
+    while (requiredWord != preparedWord) {
+        ruleToReplace = "";
+        targetCharacter = requiredWord[preparingIndex];
         workingCharacter = preparedWord[preparingIndex];
 
-        if (preparedWord[preparingIndex] != requiredWord[preparingIndex]){
+        if (preparedWord[preparingIndex] != targetCharacter){
             if (!rules[workingCharacter].empty())
                 workingRules = rules[workingCharacter];
 
-            preparedWord.replace(preparingIndex, workingRules[0].length(), workingRules[0]);
+            ruleToReplace = findTheRuleToReplace(targetCharacter, workingRules);
 
-            cout << "Step-" << preparingIndex + 1 << ": " + preparedWord << endl;
+            if (ruleToReplace == "") {
+                targetCharacter = findRuleWhereCharacterExists(requiredWord[preparingIndex], rules);
+                ruleToReplace = findTheRuleToReplace(targetCharacter, workingRules);
+            }
+
+            preparedWord.replace(preparingIndex, 1, ruleToReplace);
+
+            cout << "Step-" << stepCounter++ << ": " + preparedWord << endl;
             if (preparedWord[preparingIndex] == requiredWord[preparingIndex])
                 preparingIndex++;
         }
@@ -29,6 +68,7 @@ string leftMostDerivation(string input, string requiredWord, map<char, vector<st
 
 int main() {
     /***
+    // Lexical analysis
     LexicalAnalysis lexicalAnalysis;
 
     string codeLines[5];
@@ -45,13 +85,24 @@ int main() {
     }
      */
 
-    string word = "abc";
+//    string word = "abc";
+    string word = "bccb";
 
     map<char, vector<string>> rules;
     vector<string> data = {};
-    rules.insert(make_pair('S', vector<string> {"aAB"}));
-    rules.insert(make_pair('A', vector<string> {"b", "E"}));
-    rules.insert(make_pair('B', vector<string> {"c", "E"}));
+    rules.insert(make_pair('S', vector<string> {"AAB", "aAB"}));
+    rules.insert(make_pair('A', vector<string> {"b", "BB", "E"}));
+    rules.insert(make_pair('B', vector<string> {"c", "AB", "E"}));
+
+    /*
+     * AAB
+     * bAB
+     * bBBB
+     * bcBB
+     * bccB
+     * bccAB
+     * bccbB
+     * bccb*/
 
     string input = "S";
 
