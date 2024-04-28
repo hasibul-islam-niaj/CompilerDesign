@@ -12,11 +12,12 @@ string KEYWORDS_PATTERN = DATA_TYPES_PATTERN
                             "|switch|case"
                             "|break|continue|return)\\b";
 string PUNCTUATION_PATTERN = ":|;|,";
-string IDENTIFIER_PATTERN = "\\b(?!(" + KEYWORDS_PATTERN + "|" + PUNCTUATION_PATTERN + ")\\b)([a-zA-Z][_a-zA-Z$0-9]*)";
-string CONSTANTS_PATTERN = "\\b\\d+(\\.\\d+)?\\b";
+string IDENTIFIER_PATTERN = "(\\b(?!(" + KEYWORDS_PATTERN + "|" + PUNCTUATION_PATTERN + ")\\b))([a-zA-Z&*][_a-zA-Z$0-9]*)";
+string CONSTANTS_PATTERN = "\\-?\\b\\d+(\\.\\d+)?\\b";
 string PARENTHESIS_PATTERN = "\\(|\\)|\\{|\\}|\\[|\\]";
 string LOGICAL_OPERATOR_PATTERN = "==|!=|<(?!=)|<=|>(?!=)|>=|&&|\\|\\||!(?!=)";
-string ARITHMETIC_OPERATOR_PATTERN = "\\+|\\-|\\*|\\/|\\%|[^(=!<>)]\\=[^(=]";
+string ARITHMETIC_OPERATOR_PATTERN = "\\"
+                                     "+|\\-|\\*|\\/|\\%|[^(=!<>)]\\=[^(=]";
 
 TokenLibrary::TokenLibrary() {
     tokens[0] = {"Data-Type", DATA_TYPES_PATTERN};
